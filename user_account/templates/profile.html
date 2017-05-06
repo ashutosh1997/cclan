@@ -160,7 +160,7 @@
 			<div class="col-sm-9">
 				<div class="cover-container">
 					<div id="cover-image">
-						<img src="{% static 'images/cover.jpg' %}" class="img-responsive">
+						<img src="{{ user.profile.cover_pic.url }}" class="img-responsive">
 						<a href="#" id="edit-cover"><span class="glyphicon glyphicon-camera"></span>Edit</a>
 					</div>
 					<ul>
