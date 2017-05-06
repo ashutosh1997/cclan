@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from signup.models import UserProfile
-from user_account.forms import ProfileUpdateForm, ProfilePicUpdateForm, PostForm
+from user_account.forms import ProfileUpdateForm, ProfilePicUpdateForm, PostForm, CoverPicUpdateForm
 from user_account.models import Post
 
 
@@ -39,6 +39,23 @@ def update_avatar(request):
         if request.method == 'POST' and image_form.is_valid():
             m = UserProfile.objects.get(pk=user.id)
             m.avatar = image_form.cleaned_data['avatar']
+            m.save()
+
+        return HttpResponseRedirect('/user_account/')
+
+    return HttpResponseRedirect('/login/')
+
+
+@csrf_exempt
+def update_cover(request):
+    user = User.objects.get(id=request.user.id)
+    profile = UserProfile.objects.get(pk=user.id)
+    user = request.user
+    if request.user.is_authenticated:
+        cover_form = CoverPicUpdateForm(request.POST, request.FILES)
+        if request.method == 'POST' and cover_form.is_valid():
+            m = UserProfile.objects.get(pk=user.id)
+            m.cover = cover_form.cleaned_data['cover']
             m.save()
 
         return HttpResponseRedirect('/user_account/')

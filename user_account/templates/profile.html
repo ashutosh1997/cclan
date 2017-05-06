@@ -98,14 +98,13 @@
 						</div>
 						<div class="information-container">
 							<ul>
-								<li><span class="glyphicon glyphicon-education"></span>Studies Computer Science &amp; Engineering (CSE) at G.B Pant Govt. Engineering College,IP University</li>
-								<li><span class="glyphicon glyphicon-education"></span>Went to G.B.S.S. School New Kondli, Delhi-96</li>
-								<li><span class="glyphicon glyphicon-home"></span>Lives in {{ profile.location }}</li>
+								<li><span class="glyphicon glyphicon-education"></span>Studies {{ profile.qualification }} at {{ profile.college }}</li>
+                                <li><span class="glyphicon glyphicon-education"></span>Went to {{ profile.college }}</li>
+                                <li><span class="glyphicon glyphicon-home"></span>Lives in {{ profile.location }}</li>
+                                <li><span class="glyphicon glyphicon-map-marker"></span>From {{ profile.hometown }}</li>
                                 <li><span class="fa fa-mars-stroke"></span> Gender : {{ profile.gender }}</li>
-                                <li><span class="glyphicon glyphicon-heart"></span>Single</li>
+                                <li><span class="glyphicon glyphicon-heart"></span>{{ profile.rel_status }}</li>
                                 <li><span class="glyphicon glyphicon-calendar"></span>D.O.B : {{ profile.dob }}</li>
-								<li><span class="glyphicon glyphicon-map-marker"></span>From Bulandshahar, India</li>
-								<li><span class="glyphicon glyphicon-stats"></span>Followed by 16 people</li>
 							</ul>
 						</div>
 					</div>
@@ -160,8 +159,10 @@
 			<div class="col-sm-9">
 				<div class="cover-container">
 					<div id="cover-image">
-						<img src="{{ user.profile.cover_pic.url }}" class="img-responsive">
-						<a href="#" id="edit-cover"><span class="glyphicon glyphicon-camera"></span>Edit</a>
+						<img src="{{ user.profile.cover.url }}" class="img-responsive">
+						<a href="#" id="edit-cover" data-toggle="modal" data-target="#update-cover-modal">
+                            <span class="glyphicon glyphicon-camera"></span>Edit
+                        </a>
 					</div>
 					<ul>
 						<li><a href="#">Timeline</a></li>
@@ -387,6 +388,33 @@
 	       		            <div class="col-sm-12">
                                 <input id="avatar" type="file" class="" name="avatar">
                                 <img id="avatar-preview" src="">
+	       		            </div>
+	       	            </div>
+	                </div>
+	                <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>
+
+    <!-- Update Cover Modal -->
+	<div class="modal fade" id="update-cover-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                <h3 class="modal-title" id="myModalLabel">Update Cover Photo</h3>
+	            </div>
+                <form action="{% url 'update_cover' %}" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+	                <div class="modal-body">
+	       	            <div class="row">
+	       		            <div class="col-sm-12">
+                                <input id="cover" type="file" class="" name="cover">
+                                <img id="cover-preview" src="">
 	       		            </div>
 	       	            </div>
 	                </div>

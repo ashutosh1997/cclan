@@ -41,6 +41,7 @@ urlpatterns = [
 
     url(r'^user_account/$', user_account.views.my_account, name='my_account'),
     url(r'^update_avatar/', user_account.views.update_avatar, name='update_avatar'),
+    url(r'^update_cover/', user_account.views.update_cover, name='update_cover'),
     url(r'^update_profile/', user_account.views.update_profile, name='update_profile'),
     url(r'^create_post/', user_account.views.create_post, name='create_post'),
     url(r'^delete_post/', user_account.views.delete_post, name='delete_post'),

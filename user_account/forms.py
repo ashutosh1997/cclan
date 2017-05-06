@@ -19,6 +19,14 @@ class ProfilePicUpdateForm(ModelForm):
         fields = ('avatar',)
 
 
+class CoverPicUpdateForm(ModelForm):
+    cover = forms.ImageField()
+
+    class Meta:
+        model = UserProfile
+        fields = ('cover',)
+
+
 class PostForm(ModelForm):
 
     class Meta:

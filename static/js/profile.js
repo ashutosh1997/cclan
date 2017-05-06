@@ -35,6 +35,20 @@ function showPreview(input) {
         showPreview(this);
     });
 
+function coverPreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#cover-preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#cover").change(function(){
+        coverPreview(this);
+    });
+
 function postImagePreview(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

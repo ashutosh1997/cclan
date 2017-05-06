@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 #
 # GENDER = (
 #     ('male', 'MALE'),
@@ -13,8 +14,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, primary_key=True, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='profile_pic', default='profile_pic/default.png',
                                blank=True)
-    cover_pic = models.ImageField(upload_to='cover_pic', default='cover_pic/cover_default.jpg',
-                                  blank=True)
+    cover = models.ImageField(upload_to='cover_pic', default='cover_pic/cover_default.jpg',
+                              blank=True)
     gender = models.CharField(max_length=6)
     bio = models.CharField(max_length=500, null=True, blank=True)
     qualification = models.CharField(max_length=50, null=True, blank=True)
@@ -48,4 +49,3 @@ User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 #     def __str__(self):
 #         return self.username
 #
-
