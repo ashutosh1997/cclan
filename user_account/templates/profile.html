@@ -1,0 +1,487 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>#}
+    <script src="{% static 'js/jquery_3.2.0.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+	<title>Profile | {{ user.username }}</title>
+</head>
+
+<body background="{% static 'images/login_back.jpg' %}">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  		<div class="container-fluid">
+    		<!-- Brand and toggle get grouped for better mobile display -->
+    		<div class="navbar-header">
+	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+	      		</button>
+	      		<a class="navbar-brand" href="#">Campus Clan</a>
+    		</div>
+
+    		<!-- Collect the nav links, forms, and other content for toggling -->
+    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    			<form class="navbar-form navbar-left">
+				    <div class="form-group">
+				    	<input type="text" class="form-control" id="search-bar" placeholder="Search...">
+				    </div>
+				    <a href="#"><span class="glyphicon search-icon glyphicon-search"></span></a>
+	        		<!-- <button type="submit" class="btn btn-default">Submit</button> -->
+      			</form>
+
+      			<ul class="nav navbar-nav">
+        			<li><a href="#"><span class="glyphicon glyphicon-home"></span>Home<span class="sr-only">(current)</span></a></li>
+			        <li class="active"><a href="/user_account/">
+                        <span><img class="glyphicon navbar-user" src="{{ user.profile.avatar.url }}">
+                        </span>{{ user.first_name }}</a></li>
+			        <li class="dropdown">
+          				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell"></span>Notifications</a>
+				        <ul class="dropdown-menu">
+				            <li><a href="#">Action</a></li>
+				            <li><a href="#">Another action</a></li>
+				            <li><a href="#">Something else here</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="#">Separated link</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="#">One more separated link</a></li>
+			          	</ul>
+        			</li>
+      			</ul>
+      			
+      			<ul class="nav navbar-nav navbar-right">
+        			<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span>Help</a></li>
+        			<li class="dropdown">
+          				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+				        <ul class="dropdown-menu">
+				        	<li><a href="#"><span class="glyphicon glyphicon-phone"></span>My Account</a></li>
+				        	<li><a href="#"><span class="glyphicon glyphicon-globe"></span>Privacy</a></li>
+				        	<li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+				        	<li role="separator" class="divider"></li>
+				         	<li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+				        </ul>
+        			</li>
+      			</ul>
+
+    		</div><!-- /.navbar-collapse -->
+  		</div><!-- /.container-fluid -->
+	</nav>
+
+	<!--About Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">About</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="row">
+	        	<div class="col-sm-12">
+	        		<div class="profile-container">
+						<div class="intro-container">
+							<p class="info">Basic Info {% comment %}<span><a id="edit-info" href="#">Edit</a></span>{% endcomment %}
+                            </p><br/>
+                            <p class="margin intro1">{{ profile.bio }}</p>
+						</div>
+						<div class="information-container">
+							<ul>
+								<li><span class="glyphicon glyphicon-education"></span>Studies Computer Science &amp; Engineering (CSE) at G.B Pant Govt. Engineering College,IP University</li>
+								<li><span class="glyphicon glyphicon-education"></span>Went to G.B.S.S. School New Kondli, Delhi-96</li>
+								<li><span class="glyphicon glyphicon-home"></span>Lives in {{ profile.location }}</li>
+                                <li><span class="fa fa-mars-stroke"></span> Gender : {{ profile.gender }}</li>
+                                <li><span class="glyphicon glyphicon-heart"></span>Single</li>
+                                <li><span class="glyphicon glyphicon-calendar"></span>D.O.B : {{ profile.dob }}</li>
+								<li><span class="glyphicon glyphicon-map-marker"></span>From Bulandshahar, India</li>
+								<li><span class="glyphicon glyphicon-stats"></span>Followed by 16 people</li>
+							</ul>
+						</div>
+					</div>
+	        	</div>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Photos Modal -->
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Photos</h4>
+	      </div>
+	      <div class="modal-body">
+	       	<div class="row">
+	       		<div class="col-sm-12">
+		       		<div class="photos">
+                        <h4 class="photos-heading">Photos</h4>
+                        <img src="{% static 'images/1.jpg' %}">
+                        <img src="{% static 'images/2.jpg' %}">
+                        <img src="{% static 'images/3.jpg' %}">
+                        <img src="{% static 'images/4.jpg' %}">
+                        <img src="{% static 'images/5.jpg' %}">
+                        <img src="{% static 'images/6.jpg' %}">
+                        <span class="clear"></span>
+					</div>
+	       		</div>
+	       	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<div class="container-fluid top-zero">
+
+        <!--Cover, Profile and Sidebar -->
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="cover-container">
+					<div id="cover-image">
+						<img src="{% static 'images/cover.jpg' %}" class="img-responsive">
+						<a href="#" id="edit-cover"><span class="glyphicon glyphicon-camera"></span>Edit</a>
+					</div>
+					<ul>
+						<li><a href="#">Timeline</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal">About</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal1">Photos</a></li>
+						<li><a href="#">More</a></li>
+					</ul>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-3">
+								<div id="profile-image-container">
+									<img src="{{ user.profile.avatar.url }}" id="profile-image">
+									<a href="#" id="edit-pic" data-toggle="modal" data-target="#update-avatar-modal">
+                                        <span class="glyphicon glyphicon-camera"></span>Edit
+                                    </a>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="name-container">
+									<h4>{{ user.username}}</h4>
+									<h5>({{ user.first_name }} {{ user.last_name }})</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--Sidebar-->
+			<div class="col-sm-3 above">
+				<div class="side-container">
+					<div class="clan-group">
+						<h3 id="group-heading">Clan Groups</h3>
+						<ul>
+							<li>Group 1</li>
+							<li>Group 2</li>
+							<li>Group 3</li>
+							<li>Group 4</li>
+							<li>Group 5</li>
+						</ul>
+					</div>
+					<div class="link-to-features">
+						<div class="feature-circle">
+							<p>Clan Class-Room</p>
+						</div>
+						<div class="feature-circle">
+							<p>Clan Connect</p>
+						</div>
+						<div class="feature-circle">
+							<p>Faculty's Room</p>
+						</div>	
+					</div>
+				</div>		
+			</div>
+		</div>
+
+		<div class="row overlap">
+
+            <!--Basic Info-->
+			<div class="col-sm-3">
+				<div class="profile-container">
+					<div class="intro-container">
+						<p class="info">Basic Info
+                            <span><a id="edit-info" data-toggle="modal"
+                                     data-target="#edit-info-modal">Edit</a>
+                            </span>
+                        </p><br/>
+						<p class="margin intro1">{{ profile.bio }}</p>
+					</div>
+					<div class="information-container">
+						<ul>
+							<li><span class="glyphicon glyphicon-education"></span>Studies {{ profile.qualification }} at {{ profile.college }}</li>
+							<li><span class="glyphicon glyphicon-education"></span>Went to {{ profile.college }}</li>
+							<li><span class="glyphicon glyphicon-home"></span>Lives in {{ profile.location }}</li>
+                            <li><span class="glyphicon glyphicon-map-marker"></span>From {{ profile.hometown }}</li>
+							<li><span class="fa fa-mars-stroke"></span> Gender : {{ profile.gender }}</li>
+                            <li><span class="glyphicon glyphicon-heart"></span>{{ profile.rel_status }}</li>
+                            <li><span class="glyphicon glyphicon-calendar"></span>D.O.B : {{ profile.dob }}</li>
+{#							<li><span class="glyphicon glyphicon-stats"></span>Followed by 16 people</li>#}
+						</ul>
+					</div>
+					<div class="featured-image-container">
+						<img src="{% static 'images/1.jpg' %}">
+						<img src="{% static 'images/4.jpg' %}">
+						<img src="{% static 'images/7.jpg' %}">
+						<img src="{% static 'images/3.jpg' %}">
+						<span class="clear"></span>
+					</div>
+					<div class="photos">
+						<img src="{% static 'images/1.jpg' %}">
+                        <img src="{% static 'images/2.jpg' %}">
+                        <img src="{% static 'images/3.jpg' %}">
+                        <img src="{% static 'images/4.jpg' %}">
+                        <img src="{% static 'images/5.jpg' %}">
+                        <img src="{% static 'images/6.jpg' %}">
+						<span class="clear"></span>
+					</div>
+				</div>
+			</div>
+
+            <!-- All Posts-->
+			<div class="col-sm-6">
+
+                <!-- Write Post-->
+				<div class="post-content-container">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs position-tab" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Status</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#upload-photo" aria-controls="profile" role="tab" data-toggle="tab">Photo</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="status-input">
+                                <form action="{% url 'create_post' %}" enctype="multipart/form-data" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <textarea cols="2" type="text" class="form-control"
+                                              name="post_text" required id="post-status"
+                                              placeholder="Write Post..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-info">Post</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="upload-photo">
+                            <div class="status-input">
+                                <form action="{% url 'create_post' %}" enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <textarea rows="1" cols="2" type="text" class="form-control"
+                                              name="post_text" id="post-status"
+                                              placeholder="Write Post..."></textarea>
+                                    <input id="post_image" type="file" class="btn btn-primary" name="post_image">
+                                    <img id="post-image-preview" src="">
+                                </div>
+                                <button type="submit" class="btn btn-info">Post</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+
+				<div class="post-container">
+                    {% for post in all_posts %}
+                    <div class="post">
+						<div class="post-info">
+							<img src="{{ post.user.profile.avatar.url }}">
+							<h4><a href="#">{{ post.user.first_name }} {{ post.user.last_name }}</a><br>
+                                <span style="font-size: 8.5pt">{{ post.timestamp|timesince }} ago</span>
+                            </h4>
+							<div class="dropdown post-menu">
+			         			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			          				<span class="glyphicon glyphicon-menu-down"></span>
+			          			</a>
+							    <ul class="dropdown-menu dropdown-menu-right">
+							        <li><a href="#">Edit Post</a></li>
+							        <li><a href="#">Hide Post</a></li>
+							        <li role="separator" class="divider"></li>
+							        <li><a href="#">Delete post</a></li>
+						       	</ul>
+			        		</div>
+						</div>
+                        {% if post.post_text %}
+						<div class="post-text">
+							<p>{{ post.post_text }}</p>
+						</div>
+                        {% endif %}
+                        {% if post.post_image %}
+                        <div class="post-photo">
+							<img src="{{ post.post_image.url }}">
+						</div>
+                        {% endif %}
+						<div class="like-comment-share">
+							<ul>
+								<li><a href="#"><span class="glyphicon glyphicon-thumbs-up"></span>Like</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-comment"></span>Comment</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-share"></span>Share</a></li>
+							</ul>
+						</div>
+					</div>
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+		
+
+	<div class="container-fluid footer-margin">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="footer">
+					<ul>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Policy</a></li>
+						<li><a href="#">Map</a></li>
+						<li><a href="#">location</a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Update Avatar Modal -->
+	<div class="modal fade" id="update-avatar-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                <h3 class="modal-title" id="myModalLabel">Update Profile Photo</h3>
+	            </div>
+                <form action="{% url 'update_avatar' %}" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+	                <div class="modal-body">
+	       	            <div class="row">
+	       		            <div class="col-sm-12">
+                                <input id="avatar" type="file" class="" name="avatar">
+                                <img id="avatar-preview" src="">
+	       		            </div>
+	       	            </div>
+	                </div>
+	                <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</div>
+
+    <!-- Edit Info Modal -->
+	<div class="modal fade" id="edit-info-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                <h3 class="modal-title" id="myModalLabel">Edit Personal Details</h3>
+	            </div>
+                <div id="edit-info-container">
+                <form class="form-horizontal" action="{% url 'update_profile' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="bio">Bio:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="bio" id="bio" placeholder="Enter bio"
+                                value="{{ profile.bio }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="qualification">Qualification:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="qualification" id="qualification"
+                                   value="{{ profile.qualification }}" placeholder="Enter qualification">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="college">College:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="college" id="college"
+                                   value="{{ profile.college }}" placeholder="Enter college">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="location">Location:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="location" id="location"
+                                   value="{{ profile.location }}" placeholder="Enter location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="hometown">Hometown:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="hometown" id="hometown"
+                                   value="{{ profile.hometown }}" placeholder="Enter hometown">
+                        </div>
+                    </div>
+                    <label style="margin-bottom: 15px;">Relationship Status :
+                        <select name="rel_status">
+                            <option value="{{ profile.rel_status }}" selected disabled>Choose Option</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="In a relationship">In a relationship</option>
+                            <option value="Its complicated">Its complicated</option>
+                        </select>
+                    </label>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="dob">Birthday:</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" name="dob" id="dob"
+                                   value="{{ profile.dob }}"placeholder="Enter birthday">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="gender">Gender:</label>
+                        <div class="radio col-sm-10">
+                            <label><input type="radio" value="Male" name="gender"
+                            {% if profile.gender == 'Male' %}checked{% endif %}>Male</label>
+                            <label><input type="radio" value="Female" name="gender"
+                            {% if profile.gender == 'Female' %}checked{% endif %}>Female</label>
+                        </div>
+                    </div>
+	                <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+	</div>
+
+
+    <script type="text/javascript" src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

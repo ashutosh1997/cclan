@@ -1,0 +1,7 @@
+{% extends 'signup.html' %}
+
+{% block alert %}
+    <script>alert("Username : {{uname }}  is already taken");
+    window.location="/signup/";
+    </script>
+{% endblock %}

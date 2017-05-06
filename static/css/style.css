@@ -1,0 +1,329 @@
+body{
+	background-color: #3e3e3e;
+	margin:0;
+	padding: 0;
+	color: white;
+}
+
+#container{
+	background-image: url("../images/bg.jpg");
+	width: 95%;
+	height: 96%;
+	margin: 0.5% auto 0.5%;
+	position: fixed;
+	left: 0;
+	right: 0;
+	color: white;
+	/*background-color: #cecece;*/
+	border: 5px solid darkcyan;
+	border-radius: 25px;
+	overflow: auto;
+	overflow-x: hidden;
+	box-shadow: 6px 6px 20px 10px rgba(0, 255, 255, 0.2),-6px -6px 20px 10px rgba(0, 255, 255, 0.2);
+}
+
+#head{
+	background-color: #333333;
+	width: 100%;
+	height: 5%;
+	color: white;
+	margin: 0;
+	text-align: center;
+	font-size: 20pt;
+	padding: 1% 0 2%;
+	position: absolute;
+	border-radius: 25px 25px 0 0;
+}
+
+.sidebar{
+	width: 15%;
+	float: left;
+	height: auto;
+	top: 8%;
+	bottom: 0;
+	position: absolute;
+	overflow: hidden;
+	background-color: #f1f1f1;
+	font-size: 16pt;
+}
+ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+li a:active,li a:focus {
+    background-color: darkcyan;
+    color: white;
+}
+li a:hover:not(:focus) {
+    background-color: #6f6f6f;
+    color: white;
+}
+
+.form-container{
+	width: 85%;
+	height: 95%;
+	margin-top: 4%;
+	bottom: -10%;
+	float: right;
+	color: white;
+	background-image: url("../images/dot.png");
+	overflow: auto;
+	overflow-x: hidden;
+	font-family: Gadugi, sans-serif;
+}
+
+.h-margin{
+	height: 2vh;
+}
+
+.margin{
+	height: 3vh;
+}
+h2{
+	color: #fff;
+	font-family: Calibri sans-serif;
+	border-bottom: 1px solid #fff;
+	padding-bottom: 1%;
+}
+
+
+.msg{
+	width: 60%;
+	margin: 5% auto 0;
+	padding-right: 20%;
+	padding-left: 25%;
+	color: white;
+	border: none;
+	overflow-x: auto;
+}
+
+.details{
+	margin-left: 20%;
+	padding: 5%;
+	width: 50%;
+	background-color: #5e5e5e;
+	color: white;
+	position: relative;
+	border-radius: 20px;
+}
+
+#login{
+	width: 60%;
+	height: 100vh;
+	margin: 0 auto 0 auto;
+	padding-right: 20%;
+	padding-left: 20%;
+	overflow-y: auto;
+}
+
+label {
+	margin-left: 0;
+	cursor: pointer;
+	color: #fff;
+}
+
+input[type=text],input[type=email],input[type=password],
+input[type=number],input[type=date], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 5px 0 10px;
+	display: block;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	box-sizing: border-box;
+	font-size: 12pt;
+}
+
+input:focus,.back-btn:focus,.next-btn:focus,textarea:focus, select:focus{
+	box-shadow: 0 0 10px 3px cyan !important;
+	outline: none;
+}
+
+input[type=radio]:checked,input[type=radio]:focus,input[type=radio]:active{
+	background-color: greenyellow;
+	box-shadow: 0 0 10px 3px greenyellow;
+}
+
+
+textarea{
+	border-radius: 20px;
+}
+
+table {
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+td{
+	width: 50%;
+	padding-right: 0.5%;
+	vertical-align: top;
+}
+th{
+	color: #fff;
+}
+
+.next-btn,.back-btn,.submit-btn{
+	width: 7%;
+	background-color: #337ab7;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	float: right;
+	padding: 14px 20px;
+	/*margin: 5% 0 20%;*/
+	border: none;
+	border-radius: 30px;
+	cursor: pointer;
+	z-index: 100;
+}
+.back-btn {
+	background-color: #acacac;
+	color: white;
+	float: left;
+	z-index: 100;
+}
+
+.submit-btn {
+	background-color: #449d44;
+	width: 20%;
+	line-height: 22px;
+	margin-top: 5%;
+	float: right;
+	color: white;
+	right: 50%;
+	z-index: 100;
+	font-family: Gadugi, sans-serif;
+	font-size: 12pt;
+}
+
+#login>.back-btn,#login>.back-btn:hover{
+	background-color: #acacac;
+	cursor: not-allowed;
+}
+#survey>.next-btn,#survey>.next-btn:hover{
+	background-color: #637a99;
+	cursor: not-allowed;
+}
+
+.next-btn:hover {background-color: #286090;}
+.back-btn:hover {background-color: #888888;}
+.submit-btn:hover{background-color: #398439}
+
+.error {
+	position: relative;
+	margin-left: 5%;
+	display: none;
+	min-width: 150px;
+	max-width: 200px;
+	height: auto;
+	text-align: center;
+	line-height: 20px;
+	color: #fff;
+	background-color: red;
+	border: 5px solid red;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+.error:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+	top: -32px;
+	border: 15px solid;
+	border-color: transparent transparent red transparent;
+}
+/*p.error:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+	top: -28px;
+	border: 15px solid;
+	border-color: transparent transparent #fff transparent;
+}*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 30vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background: linear-gradient(to bottom right, #cecece, #fff);
+	background: -moz-linear-gradient(bottom right, #cecece, #fff);
+    margin: auto;
+    padding: 20px;
+    border: 5px solid red;
+    border-radius: 15px;
+    width: 60%;
+	box-shadow: 0 0 100px 3px red;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    margin-top: -18px;
+    margin-right: -10px;
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#ok{
+	display: block;
+	background: linear-gradient(to bottom right, #9e9e9e, #cecece);
+	background: -moz-linear-gradient(bottom right, #9e9e9e, #cecece);
+	border-radius: 5px;
+	padding: 4px;
+	right:10px;
+	height: 10%;
+	line-height: 30px;
+	margin-left: 90%;
+	text-align: center;
+}
+#ok:hover{
+	background: linear-gradient(to bottom right, #4e4e4e, #aeaeae);
+	background: -moz-linear-gradient(bottom right, #4e4e4e, #aeaeae);
+	color: #fff;
+	cursor: pointer;
+}
+
+#warnText{
+	font-size: 18pt;
+	font-family: Dialog, serif;
+	padding-top: 4px;
+}
+
+::-webkit-scrollbar {width: 10px;background: transparent;}
+::-webkit-scrollbar-thumb {background: #777777;border-radius: 10px ;}
+::-webkit-scrollbar-thumb:hover {background: #666666;}
+::-webkit-scrollbar-thumb:active {background: #555555;}

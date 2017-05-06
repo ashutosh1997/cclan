@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{#  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">#}
+</head>
+<body>
+
+{% block msg %}{% endblock %}
+
+<div id="container">
+
+	<div id="head">{% block head %}{% endblock %}</div>
+
+	<div class="sidebar">
+		<ul class="sidenav">
+            <li><a id="1" href="/admin/">Admin</a></li>
+			<li><a id="2" href="/login/">Login</a></li>
+            <li><a id="3" href="/signup/">Signup</a></li>
+            <li><a id="4" href="/showdata/">Show Users</a></li>
+		</ul>
+	</div>
+
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+    		<span class="close">&times;</span>
+    		<p id="warnText"></p>
+			<div id="ok">OK</div>
+  		</div>
+	</div>
+
+	<div class="form-container">
+
+            {% block content %}{% endblock %}
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

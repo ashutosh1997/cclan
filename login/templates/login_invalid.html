@@ -1,0 +1,12 @@
+{% extends "signin.html" %}
+
+{% block content %}
+
+    {% comment %}<h2 class="msg">...You Login details are invalid...</h2>
+    <p class="msg">Click here to login again.</p>
+    <a class="msg" href="/login/">Login</a>{% endcomment %}
+    <script>
+        alert("Invalid username or password !");
+        window.location="/login/";
+    </script>
+{% endblock %}

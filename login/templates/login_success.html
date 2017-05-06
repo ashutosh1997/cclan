@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2 class="msg">
+        {% if user.is_superuser %}
+            Hi {{ user.username }}, you are logged in !
+        {% else %}
+            Hi {{ user.first_name }} {{ user.last_name }}, you are logged in !
+        {% endif %}
+    </h2>
+
+    <div class="details">
+        <ul>
+            {% if user.is_superuser %}
+                <li> Username  :{{ user.username }}</li>
+                <li>Account Type : <b>Admin</b></li>
+            {% else %}
+                <li> Username  :{{ user.username }}</li>
+                <li> First name:{{ user.first_name }}</li>
+                <li> Last name :{{ user.last_name }}</li>
+                <li> Email     :{{ user.email }}</li>
+            {% endif %}
+        </ul>
+        <h3><u>Profile</u></h3>
+        <ul>
+            {% if user.is_superuser %}
+                <li><img src="/media/profile_pic/admin/admin.png" style="height: 100px;width: 100px"></li>
+            {% else %}
+                <li><img src="{{ profile.avatar.url }}" width="100px"></li>
+                <li>Gender    :{{ profile.gender }}</li>
+                <li> Bio      :{{ profile.bio }}</li>
+                <li> Location :{{ profile.location }}</li>
+                <li> DOB      :{{ profile.dob }}</li>
+            {% endif %}
+        </ul>
+    </div>
+    <br>
+    <a class="msg" href="/logout/">Logout</a>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% if all_users %}
+
+
+<ul>
+    {% for user in all_users %}
+{#        <li><img src="{{ image.urlpatterns }}" ></li>#}
+        <li> Username      :{{ user.username }}</li>
+        <li> First name   :{{ user.first_name }}</li>
+        <li> Last name   :{{ user.last_name }}</li>
+        <li> Email      :{{ user.email }}</li>
+        <li>Password    :{{ user.password }}</li>
+        <h3><u>Profile</u></h3>
+        <ul>
+            <li>Gender    :{{ user.profile.gender }}</li>
+            <li> Bio      :{{ user.profile.bio }}</li>
+            <li> Location :{{ user.profile.location }}</li>
+            <li> DOB      :{{ user.profile.dob }}</li>
+        </ul>
+        <br><br>
+    {% endfor %}
+    </ul>
+
+{#  In case  no user exists.  #}
+{% else %}
+<h3> No users found.</h3>
+{% endif %}

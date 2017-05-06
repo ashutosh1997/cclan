@@ -1,0 +1,7 @@
+{% extends 'signup.html' %}
+
+{% block alert %}
+    <script>alert("****** Signup Successful *******\n\nUsername: {{ uname }}\nEmail: {{ email }}");
+    window.location="/";
+    </script>
+{% endblock %}

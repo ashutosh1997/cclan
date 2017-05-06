@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}CampusClan|Signup{% endblock %}
+{% block head %}SIGNUP{% endblock %}
+
+{% block msg %}
+    {% block alert %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+    <form id="login" action="{% url 'signup' %}" enctype="multipart/form-data" method="post">
+        <h2>Signup</h2>
+        {% csrf_token %}
+{#        {{ user_form }}#}
+{#        {{ profile_form }}#}
+
+        <label>Username <input name="username" type="text" required placeholder="Enter username"></label>
+        <label>First name <input name="first_name" type="text" required placeholder="Enter first name"></label>
+        <label>Last Name <input name="last_name" type="text" required placeholder="Enter last name"></label>
+        <label>Email <input name="email" type="email" required placeholder="Enter email"></label>
+        <label>Password <input name="password1" type="password" required placeholder="Enter password"></label>
+        <label>Password Again <input name="password2" type="password" required placeholder="Verify password "></label>
+
+        <p>
+            <input id="avatar" type="file" class="" name="avatar">
+        </p>
+
+        <br><label>Gender
+            <input name="gender" id="m" value="Male" type="radio" required/><label for="m">Male</label>
+            <input name="gender" id="f" value="Female" type="radio" required/><label for="f">Female</label>
+            <input name="gender" id="o" value="other" type="radio" required/><label for="o">Other</label>
+        </label><br><br>
+        <label>Bio <input name="bio" type="text"  placeholder="Enter bio"></label>
+        <label>Location <input name="location" type="text"  placeholder="Enter location"></label>
+        <label>DOB <input name="dob" type="date"  required placeholder="Enter date of birth"></label>
+        <input type="submit" class="submit-btn" value="OK">
+    </form>
+
+{% endblock %}

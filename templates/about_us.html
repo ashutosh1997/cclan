@@ -1,0 +1,102 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>About Us</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/about.css' %}" rel="stylesheet">
+
+    {% comment %}<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->{% endcomment %}
+
+</head>
+
+<body>
+
+    
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Introduction Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">About Us
+                    <small>It's Nice to Meet You!</small>
+                </h1>
+                <p>Campus clan is a vast network for finding your senior and faculty members all over gloge</p>
+            </div>
+        </div>
+
+        <!-- Team Members Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Our Team</h2>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center about-pic" src="{% static 'images/dhirendra.png' %}" alt="">
+                <h3>Dheerendra Singh
+                    <small>(Front-End-Developer)</small>
+                </h3>
+                <p>Expert in Frontend Development.</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center about-pic" src="{% static 'images/ashutosh.jpg' %}" alt="">
+                <h3>Ashutosh Kumar
+                    <small>(Back-End-Developer)</small>
+                </h3>
+                <p>Expert in Full Stack development and building databases.</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center">
+                <img class="img-circle img-responsive img-center about-pic" src="{% static 'images/deepak.jpg' %}" alt="">
+                <h3>Deepak Pandey
+                    <small>(Content Writer)</small>
+                </h3>
+                <p>What does this team member do? Keep it short!<br>Content Writer.</p>
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer-p">
+                    <p>Copyright &copy; Campus Clan 2017</p>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery_3.2.0.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
